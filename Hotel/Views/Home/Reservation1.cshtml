@@ -1,0 +1,55 @@
+﻿@model Guest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reservation1</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <form class="form-horizontal" method="post" action="/home/guest_reservation">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ReservationId</label>
+                <div class="col-sm-10">
+                    <input type="text" value="@ViewBag.reservationid" name="reservationid" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.FirstName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.FirstName, new { @class = "form-control", placeholder = "FirstName", required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.LastName, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.LastName, new { @class = "form-control", placeholder = "LastName", required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Address, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Address, new { @class = "form-control", placeholder = "Address", required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Phone, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Phone, new { @class = "form-control", placeholder = "Phone", required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Reserve</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

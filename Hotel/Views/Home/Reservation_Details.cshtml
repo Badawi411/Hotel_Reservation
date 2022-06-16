@@ -1,0 +1,119 @@
+﻿@using Hotel.Models;
+@model dynamic
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reservation_Details</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="webthemez">
+    <title>Golden-Hotel-Free-HTML5-Bootstrap-Web-Template</title>
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/css/styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/css/slider-style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/slider-custom.css" />
+    <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+
+    <link rel="shortcut icon" href="~/Content/images/ico/favicon.ico">
+</head>
+<body>
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default " role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Content/images/logo.png" alt="logo"></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Rooms", "Rooms", "Home")</li>
+                        <li>@Html.ActionLink("Residents", "residents", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        <table class="table @*table-bordered*@ table-hover table-striped custom-table">
+            <thead>
+                <tr>
+                    <th>Reservation Id</th>
+                    <th>Adults</th>
+                    <th>Children</th>
+                    <th>ReservationDate</th>
+                    <th>CheckInDate</th>
+                    <th>CheckOutDate</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Reservation item in Model.reservationlist)
+                {
+                    <tr>
+                        <td>@item.ReservationId</td>
+                        <td>@item.Adults</td>
+                        <td>@item.Children</td>
+                        <td>@item.ReservationDate</td>
+                        <td>@item.CheckInDate</td>
+                        <td>@item.CheckOutDate</td>
+                        <td>@item.Total</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table @*table-bordered*@ table-hover table-striped custom-table">
+            <thead>
+                <tr>
+                    <th>GuestId</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Guest item in Model.guestlist)
+                {
+                    <tr>
+                        <td>@item.GuestId</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Address</td>
+                        <td>@item.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                @Html.ActionLink("Back", "rooms", "home", null, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿@model List<Room>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Room</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <!-- Required meta tags -->
+    <!--<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Table/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/Table/css/owl.carousel.min.css">-->
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="~/Table/css/bootstrap.min.css">-->
+
+    <!-- Style -->
+    <!--<link rel="stylesheet" href="~/Table/css/style.css">-->
+
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="webthemez">
+        <title>Golden-Hotel-Free-HTML5-Bootstrap-Web-Template</title>
+
+        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+        <link href="~/Content/css/animate.min.css" rel="stylesheet">
+        <link href="~/Content/css/prettyPhoto.css" rel="stylesheet">
+        <link href="~/Content/css/styles.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="~/Content/css/slider-style.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/css/slider-custom.css" />
+        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+
+        <link rel="shortcut icon" href="~/Content/images/ico/favicon.ico">
+</head>
+<body>
+    <header id="header">
+        <nav id="main-nav" class="navbar navbar-default " role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Content/images/logo.png" alt="logo"></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Rooms", "Rooms", "Home")</li>
+                        <li>@Html.ActionLink("Residents", "residents", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <table class="table @*table-bordered*@ table-hover table-striped custom-table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(a => a[0].RoomNumber) </th>
+                    <th>@Html.DisplayNameFor(a => a[0].RoomType)</th>
+                    <th>@Html.DisplayNameFor(a => a[0].StandardOccupancy)</th>
+                    <th>@Html.DisplayNameFor(a => a[0].MaximumOccupancy)</th>
+                    <th>@Html.DisplayNameFor(a => a[0].BasePrice)</th>
+                    <th>@Html.DisplayNameFor(a => a[0].ExtraPerson)</th>
+                    <th>@Html.DisplayNameFor(a => a[0].Reserved)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RoomNumber</td>
+                        <td>@item.RoomType</td>
+                        <td>@item.StandardOccupancy</td>
+                        <td>@item.MaximumOccupancy</td>
+                        <td>@item.BasePrice</td>
+                        <td>@item.ExtraPerson</td>
+                        <td>
+                            @if (item.Reserved == true)
+                            {
+                                @Html.ActionLink("Reserved", "reservation_details", "home", new { roomnumber = item.RoomNumber }, new { @class = "btn btn-success" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Not Reserved", "reservation", "home", new { roomnumber = item.RoomNumber }, new { @class = "btn btn-danger" })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @*<script src="~/Table/js/bootstrap.min.js"></script>
+    <script src="~/Table/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Table/js/main.js"></script>
+    <script src="~/Table/js/owl.carousel.min.js"></script>
+    <script src="~/Table/js/popper.min.js"></script>*@
+</body>
+</html>
